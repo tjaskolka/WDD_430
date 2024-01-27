@@ -3,8 +3,13 @@
         <div>
         <h2 class="list-group-item-heading pull-left"></h2>
         <span class="pull-left">
-            <img src="" alt="" class="img-responsive" style="max-height: 100px;">
+            <img [src]="contact.imageUrl" alt="{{ contact.imageUrl }}" class="img-responsive" style="max-height: 100px;">
         </span>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{{ contact.name }}</h1>
+            </div>
         </div>
         <div class="pull-right">
         <button class="btn btn-primary">Edit</button>
@@ -15,8 +20,8 @@
         <div class="row">
             <div class="col-xs-12">
                     <div class="pull-left">
-                        <p>Email: </p>
-                        <p>Phone: </p>
+                        <p>Email: {{ contact.email }}</p>
+                        <p>Phone: {{ contact.phone }}</p>
                     </div>
             </div>
         </div>
