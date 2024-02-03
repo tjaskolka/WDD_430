@@ -11,11 +11,11 @@ export class DocumentListComponent {
   @Output() selectedDocumentEvent = new EventEmitter<Document>();
 
   documents: Document[] = [
-    new Document("1", "doc1", "first document", "#"),
-    new Document("2", "doc2", "second document", "#"),
-    new Document("3", "doc3", "third document", "#"),
-    new Document("4", "doc4", "fourth document", "#"),
-    new Document("5", "doc5", "fifth document", "#")
+    new Document("1", "doc1", "first document", "#1"),
+    new Document("2", "doc2", "second document", "#2"),
+    new Document("3", "doc3", "third document", "#3"),
+    new Document("4", "doc4", "fourth document", "#4"),
+    new Document("5", "doc5", "fifth document", "#5")
   ]
 
   
