@@ -7,6 +7,7 @@ import { MessagesService } from '../messages.service';
   templateUrl: './message-edit.component.html',
   styleUrl: './message-edit.component.css'
 })
+
 export class MessageEditComponent {
 //  @Output() addMessageEvent = new EventEmitter<Message>();
   @ViewChild('subject') subject: ElementRef;
