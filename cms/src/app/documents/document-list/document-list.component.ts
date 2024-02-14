@@ -1,7 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Document } from '../document.model';
 import { DocumentsService } from '../documents.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'cms-document-list',
@@ -11,10 +13,15 @@ import { DocumentsService } from '../documents.service';
 export class DocumentListComponent implements OnInit {
   documents: Document[] = [];
 
-  constructor(private documentsService: DocumentsService) {}
+  constructor(private documentsService: DocumentsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.documents = this.documentsService.getDocuments();
+    this.documentsService.documentChangedEvent.subscribe(
+      (documents: Document[]) => {
+        this.documents = documents;
+      }
+    );
   }
     
 }
