@@ -4,12 +4,7 @@ import { Observable } from "rxjs";
 
 import { AuthService } from "./auth.service";
 
-export const AuthGuard: CanActivateFn = (
+export const authGuard: CanActivateFn = (
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-): Observable<boolean> | Promise<boolean> | boolean {
-    const authService = inject(AuthService);
-    const router = inject(Router);
-
-    return authService.loggedIn;
-};
+) 
