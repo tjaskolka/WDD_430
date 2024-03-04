@@ -17,6 +17,8 @@ import { MessageEditComponent } from './messages/message-edit/message-edit.compo
 import { MessageListComponent } from './messages/message-list/message-list.component';
 import { DropdownDirective } from './documents/shared/dropdown.directive';
 import { MessagesService } from './messages/messages.service';
+import { FormsModule } from '@angular/forms';
+import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { MessagesService } from './messages/messages.service';
     DocumentListComponent,
     DocumentItemComponent,
     DocumentDetailComponent,
+    DocumentEditComponent,
     MessageItemComponent,
     MessageEditComponent,
     MessageListComponent,
@@ -37,7 +40,8 @@ import { MessagesService } from './messages/messages.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [MessagesService],
   bootstrap: [AppComponent]
