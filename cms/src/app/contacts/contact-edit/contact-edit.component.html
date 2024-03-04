@@ -31,7 +31,7 @@
             email
             [ngModel]="contact?.email"
             #email="ngModel"
-            pattern=“[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$”>
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
 <div *ngIf="!email.valid && email.touched">
   <p>Enter a valid email address.</p>
 </div>

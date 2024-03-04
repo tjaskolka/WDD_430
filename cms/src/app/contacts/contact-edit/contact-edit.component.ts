@@ -36,15 +36,27 @@ export class ContactEditComponent implements OnInit {
       }
       this.editMode = true;
       this.contact = JSON.parse(JSON.stringify(this.originalContact));
+
+      if (this.originalContact.group) {
+        this.groupContacts = JSON.parse(JSON.stringify(this.originalContact.group));
+      }
     });
   }
 
   onSubmit(form: NgForm) {
-
+    const value = form.value;
+    const newContact = new Contact (null, value.name, value.email, value.phone, value.imageUrl, value.group);
+    if (this.editMode) {
+      this.contactService.updateContact(this.originalContact, newContact);
+    } else {
+      this.contactService.addContact(newContact);
+    }
+    this.editMode = false;
+    this.onCancel();
   }
 
   onCancel() {
-
+    this.router.navigate(['contacts']);
   }
 
 }
