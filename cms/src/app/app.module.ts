@@ -19,6 +19,7 @@ import { DropdownDirective } from './documents/shared/dropdown.directive';
 import { MessagesService } from './messages/messages.service';
 import { FormsModule } from '@angular/forms';
 import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
+import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DocumentEditComponent } from './documents/document-edit/document-edit.c
     ContactDetailComponent,
     ContactListComponent,
     ContactItemComponent,
+    ContactEditComponent,
     DocumentsComponent,
     DocumentListComponent,
     DocumentItemComponent,
