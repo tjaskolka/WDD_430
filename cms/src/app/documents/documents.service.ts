@@ -34,7 +34,7 @@ export class DocumentsService {
     if (newDocument === null || undefined) {
       return;
     }
-    this.newId = this.maxDocumentId++;
+    this.newId = this.maxDocumentId + 1;
     newDocument.id = this.newId.toString();
     this.documents.push(newDocument);
     this.documentListChangedEvent.next(this.documents.slice());

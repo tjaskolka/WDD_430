@@ -33,7 +33,7 @@ export class ContactService {
         if (newContact === null || undefined) {
             return;
         }
-        this.newId = this.maxContactId++;
+        this.newId = this.maxContactId + 1;
         newContact.id = this.newId.toString();
         this.contacts.push(newContact);
         this.contactListChangedEvent.next(this.contacts.slice());
