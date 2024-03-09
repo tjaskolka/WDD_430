@@ -20,6 +20,7 @@ import { MessagesService } from './messages/messages.service';
 import { FormsModule } from '@angular/forms';
 import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
+import { ContactsFilterPipe } from './contacts/contacts-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
     MessageItemComponent,
     MessageEditComponent,
     MessageListComponent,
-    DropdownDirective
+    DropdownDirective,
+    ContactsFilterPipe
   ],
   imports: [
     BrowserModule,
