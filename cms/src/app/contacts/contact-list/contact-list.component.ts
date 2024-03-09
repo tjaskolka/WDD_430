@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ContactListComponent implements OnInit, OnDestroy {
   contacts: Contact[] = [];
   private contactSubscription: Subscription;
-  private term: string;
+  term: string;
   
   constructor(private contactService: ContactService, private route: ActivatedRoute) {}
 

@@ -8,14 +8,15 @@ export class ContactsFilterPipe implements PipeTransform {
 
   transform(contacts: Contact[], term: string) {
     let contactArray: Contact[] = [];
-    if (contactArray.length === 0) {
-      return contacts;
-    }
 
     if (term && term.length > 0) {
       contactArray = contacts.filter(
         (contact:Contact) => contact.name.toLowerCase().includes(term.toLowerCase())
       );
+    }
+
+    if (contactArray.length < 1) {
+      return contacts;
     }
     
     return contactArray;
