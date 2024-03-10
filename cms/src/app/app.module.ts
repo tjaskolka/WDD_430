@@ -21,6 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
 import { ContactsFilterPipe } from './contacts/contacts-filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { SortPipe } from './sort.pipe';
 
 @NgModule({
   declarations: [
@@ -40,12 +42,14 @@ import { ContactsFilterPipe } from './contacts/contacts-filter.pipe';
     MessageEditComponent,
     MessageListComponent,
     DropdownDirective,
-    ContactsFilterPipe
+    ContactsFilterPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [MessagesService],
   bootstrap: [AppComponent]
