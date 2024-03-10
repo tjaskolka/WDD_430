@@ -31,8 +31,8 @@ export class DocumentsService {
       .subscribe((documents) => {
         this.documents = documents;
         console.log(documents);
- //       this.setDocuments(documents);
-       this.documentListChangedEvent.next(this.documents.slice());
+        this.setDocuments(documents);
+ //      this.documentListChangedEvent.next(this.documents.slice());
       }, error => {
         console.log(error.message);
       });   
