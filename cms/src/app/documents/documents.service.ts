@@ -23,25 +23,32 @@ export class DocumentsService {
 
   documentSelectedEvent = new EventEmitter<Document>();
 
-  getDocuments(): Document[] {
-    return this.documents.slice();
-  }
-
-  fetchDocuments() {
-    this.http
+  getDocuments() {
+    return this.http
       .get<Document[]>(
         'https://wdd430-b3deb-default-rtdb.firebaseio.com/documents.json'
       )
       .subscribe((documents) => {
-
+        this.documents = documents;
         console.log(documents);
-      this.documentListChangedEvent.next(this.documents.slice());
+ //       this.setDocuments(documents);
+       this.documentListChangedEvent.next(this.documents.slice());
       }, error => {
         console.log(error.message);
-      });
-  
+      });   
   }
 
+
+
+  fetchDocuments() {
+
+  }
+
+  setDocuments(documents: Document[]) {
+    this.documents = documents;
+    this.documentListChangedEvent.next(this.documents.slice());
+  }
+  
   getDocument(id: string): Document {
     return this.documents.find((d) => d.id === id);
   }

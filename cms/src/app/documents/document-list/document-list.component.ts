@@ -13,19 +13,24 @@ import { Subscription } from 'rxjs';
 })
 export class DocumentListComponent implements OnInit, OnDestroy {
   documents: Document[] = [];
+  isFetching = false;
   private subscription: Subscription;
 
   constructor(private documentsService: DocumentsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.documentsService.fetchDocuments();
+    this.isFetching = true;
+    this.documentsService.getDocuments();
     this.subscription = this.documentsService.documentListChangedEvent.subscribe(
       (documents: Document[]) => {
+        this.isFetching = false;
+        console.log(documents);
         this.documents = documents;
       }
     );
 
   }
+
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

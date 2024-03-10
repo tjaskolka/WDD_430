@@ -7,7 +7,9 @@
   </div>
   <div class="panel-body">
     <div class="center-panel">
-      <cms-document-item *ngFor="let document of documents | sort" [document]="document"></cms-document-item>
+      <p *ngIf="isFetching">Loading...</p>
+      <cms-document-item *ngFor="let document of documents | sort " [document]="document"></cms-document-item>
+    
     </div>
   </div>
 

@@ -15,7 +15,7 @@ export class DocumentsComponent implements OnInit {
   constructor (private documentsService: DocumentsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.documents = this.documentsService.getDocuments();
+   this.documentsService.getDocuments();
     this.documentsService.documentListChangedEvent.subscribe(
       (documents: Document[]) => {
         this.documents = documents;
