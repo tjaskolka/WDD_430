@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
+//import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
 import { Document } from './document.model';
 import { Subject } from 'rxjs';
 
@@ -9,12 +9,12 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class DocumentsService {
-  //  private documents: Document[] = [];
+  private documents: Document[] = [];
   documentChangedEvent = new EventEmitter<Document[]>();
   documentListChangedEvent = new Subject<Document[]>();
   maxDocumentId: number;
   newId: number;
-  documents: Document[] = [];
+  error = new Subject<string>();
 
   constructor(private http: HttpClient) {
 //   this.documents = MOCKDOCUMENTS;
@@ -30,18 +30,35 @@ export class DocumentsService {
       )
       .subscribe((documents) => {
         this.documents = documents;
-        console.log(documents);
         this.setDocuments(documents);
  //      this.documentListChangedEvent.next(this.documents.slice());
-      }, error => {
-        console.log(error.message);
-      });   
+      }
+      // error => {
+      //   console.log(error.message);
+      // }
+      );   
   }
 
+  storeDocuments() {
+    const docToString = JSON.stringify(this.getDocuments());
+    console.log(docToString);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
 
-
-  fetchDocuments() {
-
+//    console.log(docToString);
+    this.http.put('https://wdd430-b3deb-default-rtdb.firebaseio.com/documents.json',
+    docToString, { headers }
+    // {
+    //   observe: 'response'
+    // }
+    )
+    .subscribe(
+      (response) => {
+        console.log(response);
+      },
+      // (error) => {
+      //   this.error.next(error.message);
+      // }
+    );
   }
 
   setDocuments(documents: Document[]) {

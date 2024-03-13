@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +50,7 @@ import { SortPipe } from './sort.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    DragDropModule,
     HttpClientModule
   ],
   providers: [MessagesService],

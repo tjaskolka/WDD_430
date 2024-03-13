@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { MOCKMESSAGES } from './MOCKMESSAGES';
+//import { MOCKMESSAGES } from './MOCKMESSAGES';
 import { Message } from './message.model';
 import { Subject } from 'rxjs';
 
@@ -15,7 +15,7 @@ export class MessagesService {
   messageListChangedEvent = new Subject<Message[]>();
 
     constructor(private http: HttpClient) {
-    this.messages = MOCKMESSAGES;
+ //   this.messages = MOCKMESSAGES;
    }
 
   getMessages() {
@@ -25,10 +25,13 @@ export class MessagesService {
     )
     .subscribe((messages) => {
       this.messages = messages;
+      console.log(this.messages);
       this.messageListChangedEvent.next(this.messages.slice());
-    }, error => {
-      console.log(error.message);
-    });
+    }
+    // , error => {
+    //   console.log(error.message);
+    // }
+    );
   }
 
   getMessage(id:string): Message {

@@ -22,7 +22,11 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-xs-12">
-                <cms-contact-item *ngFor="let contact of contacts | contactsFilter:term" [contact]="contact"></cms-contact-item>
+              <div cdkDropList [cdkDropListData]="contacts">
+                <div cdkDrag *ngFor="let contact of contacts | contactsFilter:term" [cdkDragData]="contact">
+                  <cms-contact-item  [contact]="contact"></cms-contact-item>
+                </div>
+              </div>
             </div>
         </div>
     </div>
