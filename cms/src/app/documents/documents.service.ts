@@ -40,25 +40,28 @@ export class DocumentsService {
   }
 
   storeDocuments() {
-    const docToString = JSON.stringify(this.getDocuments());
-    console.log(docToString);
+    const docToString = JSON.stringify(this.documents);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json'});
 
-//    console.log(docToString);
     this.http.put('https://wdd430-b3deb-default-rtdb.firebaseio.com/documents.json',
     docToString, { headers }
     // {
     //   observe: 'response'
     // }
     )
-    .subscribe(
-      (response) => {
+    .subscribe({
+      next: (response) => {
         console.log(response);
+        this.documentListChangedEvent.next(this.documents.slice());
+        console.log("save was successful");
       },
+      error: (error) => {
+        console.log(error);
+      }
       // (error) => {
       //   this.error.next(error.message);
       // }
-    );
+  });
   }
 
   setDocuments(documents: Document[]) {
@@ -77,7 +80,8 @@ export class DocumentsService {
     this.newId = this.maxDocumentId + 1;
     newDocument.id = this.newId.toString();
     this.documents.push(newDocument);
-    this.documentListChangedEvent.next(this.documents.slice());
+//    this.documentListChangedEvent.next(this.documents.slice());
+    this.storeDocuments();
   }
 
   updateDocument(origDocument: Document, newDocument: Document) {
@@ -93,7 +97,8 @@ export class DocumentsService {
     }
     newDocument.id = origDocument.id;
     this.documents[pos] = newDocument;
-    this.documentListChangedEvent.next(this.documents.slice());
+//    this.documentListChangedEvent.next(this.documents.slice());
+    this.storeDocuments();
   }
 
   deleteDocument(document: Document) {
@@ -105,7 +110,8 @@ export class DocumentsService {
       return;
     }
     this.documents.splice(pos, 1);
-    this.documentListChangedEvent.next(this.documents.slice());
+///    this.documentListChangedEvent.next(this.documents.slice());
+    this.storeDocuments();
   }
 
   getMaxId(): number {
