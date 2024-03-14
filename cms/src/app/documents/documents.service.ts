@@ -53,7 +53,7 @@ export class DocumentsService {
       next: (response) => {
         console.log(response);
         this.documentListChangedEvent.next(this.documents.slice());
-        console.log("save was successful");
+        console.log("document store was successful");
       },
       error: (error) => {
         console.log(error);
